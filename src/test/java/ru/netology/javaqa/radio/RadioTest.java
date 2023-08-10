@@ -13,6 +13,14 @@ class RadioTest {
         int expected = 5;
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void radioStationNumberWithCounter() {
+        Radio radio = new Radio(11);
+        radio.setRadioStationNumber(10);
+        int actual = radio.getRadioStationNumber();
+        int expected = 10;
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void radioStationUnderLimit() {
@@ -22,6 +30,15 @@ class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void radioStationUnderLimitWithCounter() {
+        Radio radio = new Radio(13);
+        radio.setRadioStationNumber(13);
+        int actual = radio.getRadioStationNumber();
+        int expected = 0;
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void radioStationBelowLimit() {
@@ -135,6 +152,25 @@ class RadioTest {
         int expected = 0;
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void nextRadioStationLimitValueWithCounter1() {
+        Radio radio = new Radio(10);
+        radio.setRadioStationNumber(8);
+        radio.next();
+        int actual = radio.getRadioStationNumber();
+        int expected = 9;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void nextRadioStationLimitValueWithCounter2() {
+        Radio radio = new Radio(10);
+        radio.setRadioStationNumber(9);
+        radio.next();
+        int actual = radio.getRadioStationNumber();
+        int expected = 0;
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void prevRadioStation() {
@@ -145,7 +181,15 @@ class RadioTest {
         int expected = 5;
         Assertions.assertEquals(expected, actual);
     }
-
+    @Test
+    public void prevRadioStationLimitValueWithCounter() {
+        Radio radio = new Radio(10);
+        radio.setRadioStationNumber(0);
+        radio.prev();
+        int actual = radio.getRadioStationNumber();
+        int expected = 9;
+        Assertions.assertEquals(expected, actual);
+    }
     @Test
     public void prevRadioStationLimitValue1() {
         Radio radio = new Radio();

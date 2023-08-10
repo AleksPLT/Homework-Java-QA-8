@@ -1,10 +1,20 @@
 package ru.netology.javaqa.radio;
 
 public class Radio {
-    int maxVolume = 100;
-    int maxStation = 9;
+    private int maxVolume;
+    private int maxStation;
+    private int stationCount;
     private int radioStationNumber;
     private int volume;
+
+    public Radio(){
+        this.stationCount = 10;
+        this.maxStation = stationCount -1;
+        this.maxVolume = 100;
+    }
+    public Radio(int stationCount){
+        this.maxStation = stationCount - 1;
+    }
 
     public void increaseVolume() {
         if (volume < maxVolume) {
